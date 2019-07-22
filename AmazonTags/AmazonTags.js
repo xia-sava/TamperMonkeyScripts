@@ -2,7 +2,7 @@
 // @name            Amazon Tags
 // @namespace       http://xia.sava.to
 // @description     amazon.co.jp の商品ページのURLをちょいちょい変更します．
-// @version         1.0
+// @version         1.0.1
 // @author          xia@silvia.com
 // @include         https://www.amazon.co.jp/*
 // @grant           GM_registerMenuCommand
@@ -15,7 +15,7 @@ function amazonPlain() {
 }
 
 function amazonOriginal() {
-    goto(plainUrl(), {'emi': 'AN1VRQENFRJN5'});
+    goto(plainUrl(), {'m': 'AN1VRQENFRJN5'});
 }
 
 function amazonAssoc() {
