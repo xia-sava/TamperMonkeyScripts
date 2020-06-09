@@ -2,7 +2,7 @@
 // @name            Twitter RT Redirect
 // @namespace       http://xia.sava.to
 // @description     twitterでRTのURLを元ツイートへリダイレクトします
-// @version         1.1.0
+// @version         1.2.0
 // @author          xia@silvia.com
 // @include         https://twitter.com/*
 // ==/UserScript==]
@@ -42,7 +42,10 @@ class TwitterRtRedirect {
         }
         if (found) {
             // 何はともあれリダイレクトしちゃう
-            document.location.href = found.href.replace(/\/(?:retweets|likes)$/, '')
+            const redirectTo = found.href.replace(/\/(?:retweets(?:\/with_comments)?|likes)$/, '')
+            if (document.location.href !== redirectTo) {
+                document.location.href = redirectTo
+            }
         }
     }
 }
