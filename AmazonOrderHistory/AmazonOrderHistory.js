@@ -6,6 +6,8 @@
 // @author       xia@silvia.com
 // @match        https://www.amazon.co.jp/gp/*/order-history*
 // @icon         https://www.google.com/s2/favicons?domain=amazon.co.jp
+// @updateURL    https://github.com/xia-sava/TamperMonkeyScripts/raw/master/AmazonOrderHistory/AmazonOrderHistory.js
+// @downloadURL  https://github.com/xia-sava/TamperMonkeyScripts/raw/master/AmazonOrderHistory/AmazonOrderHistory.js
 // ==/UserScript==
 
 class AmazonOrderHistory {
