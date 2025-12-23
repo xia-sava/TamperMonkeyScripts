@@ -32,7 +32,11 @@ class MoneyForwardPIN {
         input.style.marginLeft = '8px'
         input.style.width = '80px'
 
+        const stopEvent = (e) => e.stopPropagation()
+        input.addEventListener('keyup', stopEvent)
+        input.addEventListener('keypress', stopEvent)
         input.addEventListener('keydown', async (e) => {
+            e.stopPropagation()
             if (e.key === 'Enter') {
                 e.preventDefault()
                 const pin = input.value.trim()
