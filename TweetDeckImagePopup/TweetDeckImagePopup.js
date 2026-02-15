@@ -103,14 +103,20 @@
         }
     });
 
+    // TweetDeck が document キャプチャフェーズで処理するため、
+    // window キャプチャフェーズで先に止める
+    window.addEventListener("pointerdown", function(e) {
+        if (!isTargetImage(e.target)) return;
+        e.stopImmediatePropagation();
+        e.preventDefault();
+    }, true);
+
     // クリックイベント：元の画像がクリックされたら固定用ウィンドウを新規に開く
-    document.addEventListener("click", function(e) {
+    window.addEventListener("click", function(e) {
         const target = e.target;
         if (!isTargetImage(target)) return;
-        // クリック時の元々の動作をキャンセル
-        target.onclick = null;
+        e.stopImmediatePropagation();
         e.preventDefault();
-        e.stopPropagation();
         if (popupWindow && !popupWindow.closed) {
             popupWindow.close();
             popupWindow = null;
