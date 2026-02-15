@@ -32,11 +32,11 @@ class MoneyForwardPIN {
         input.style.marginLeft = '8px'
         input.style.width = '80px'
 
-        const stopEvent = (e) => e.stopPropagation()
-        input.addEventListener('keyup', stopEvent)
-        input.addEventListener('keypress', stopEvent)
+        const stopEvent = (e) => e.stopImmediatePropagation()
+        input.addEventListener('keyup', stopEvent, true)
+        input.addEventListener('keypress', stopEvent, true)
         input.addEventListener('keydown', async (e) => {
-            e.stopPropagation()
+            e.stopImmediatePropagation()
             if (e.key === 'Enter') {
                 e.preventDefault()
                 const pin = input.value.trim()
@@ -45,7 +45,7 @@ class MoneyForwardPIN {
                     await this.submitPIN(link.href, pin)
                 }
             }
-        })
+        }, true)
 
         link.parentNode.insertBefore(input, link.nextSibling)
         this.inputAdded = true
