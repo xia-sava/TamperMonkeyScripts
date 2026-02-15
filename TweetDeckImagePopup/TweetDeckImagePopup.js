@@ -25,9 +25,9 @@
         const origUrl = imageUrl.replace(/name=\w+/, 'name=orig');
         if (newWin) {
             newWin.document.write(
-                '<html><head><title>' + title + '</title></head>' +
+                '<html lang="ja"><head><title>' + title + '</title></head>' +
                 '<body style="margin:0;padding:0;background:#000;display:flex;align-items:center;justify-content:center;height:100vh;">' +
-                '<img id="popup-img" src="' + origUrl + '" style="max-width:100%;max-height:100%;display:block;cursor:pointer;">' +
+                '<img id="popup-img" src="' + origUrl + '" style="max-width:100%;max-height:100%;display:block;cursor:pointer;" alt="">' +
                 '</body></html>'
             );
             newWin.document.close();
@@ -76,8 +76,8 @@
         if (target.tagName.toLowerCase() !== "img") return false;
         if (!target.src.startsWith("https://pbs.twimg.com/")) return false;
         const aElem = target.closest("a");
-        if (!aElem || !aElem.href.includes("/photo/")) return false;
-        return true;
+        return !(!aElem || !aElem.href.includes("/photo/"));
+
     }
 
     // 画像にホバーしたとき、対象なら記録し、ctrlキーが押されていれば即ポップアップ表示
